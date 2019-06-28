@@ -1,0 +1,25 @@
+{
+  "name": "bump",
+  "version": "1.0.0",
+  "description": "cli to bump semver",
+  "bin": "lib/index.js",
+  "repository": "http://github.com/amonks/bump",
+  "author": "Andrew Monks <a@monks.co>",
+  "license": "ISC",
+  "private": false,
+  "devDependencies": {
+    "@types/node": "^12.0.10",
+    "@types/semver": "^6.0.1",
+    "parcel": "^1.12.3",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "semver": "^6.1.2"
+  },
+  "scripts": {
+    "build-js": "parcel build index.ts --out-dir=lib --target=node --no-minify",
+    "add-shebang": "echo \"#!/usr/bin/env node\n\n$(cat lib/index.js)\" > lib/index.js",
+    "build": "yarn build-js && yarn add-shebang",
+    "test": "yarn build && ./test.bats"
+  }
+}
